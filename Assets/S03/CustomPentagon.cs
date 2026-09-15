@@ -17,9 +17,9 @@ public class CustomPentagon : MonoBehaviour
 
     int[] triangles = new int[]
       {
-            0, 1, 2, // Triangle 1
-            0, 2, 3, // Triangle 2
-            0, 3, 4  // Triangle 3
+          0, 1, 2, // Triangle 1
+          0, 2, 3, // Triangle 2
+          0, 3, 4  // Triangle 3
       };
 
     Mesh mesh = new Mesh();
