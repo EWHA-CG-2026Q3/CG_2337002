@@ -8,8 +8,8 @@ public class S06_SoftwareRasterizer_Finish : MonoBehaviour
     [SerializeField] private Vector2 vertexA = new Vector2(20, 220);
     [SerializeField] private Vector2 vertexB = new Vector2(40, 40);
     [SerializeField] private Vector2 vertexC = new Vector2(235, 120);
-    [SerializeField] private Color fillColor = new Color(1f, 0.6f, 0.2f, 1f);
-    [SerializeField] private Color backgroundColor = new Color(0f, 0f, 0f, 1f);
+    [SerializeField] private Color fillColor = new Color(0.2f, 0.75f, 0.95f, 1f);
+    [SerializeField] private Color backgroundColor = new Color(0.08f, 0.08f, 0.15f, 1f);
 
     private Texture2D canvasTexture;
     private RawImage targetImage;

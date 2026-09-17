@@ -288,8 +288,8 @@ MonoBehaviour:
   vertexA: {x: 20, y: 220}
   vertexB: {x: 40, y: 40}
   vertexC: {x: 235, y: 120}
-  fillColor: {r: 1, g: 0.6, b: 0.2, a: 1}
-  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  fillColor: {r: 0.2, g: 0.75, b: 0.95, a: 1}
+  backgroundColor: {r: 0.08, g: 0.08, b: 0.15, a: 1}
 --- !u!1 &1290225198
 GameObject:
   m_ObjectHideFlags: 0
