@@ -3,10 +3,13 @@
 public class S06_OpenGL_Finish : MonoBehaviour
 {
     [SerializeField] private Material glMaterial;
-    [SerializeField] private Vector3 vertexA = new Vector3(0f, 0f, 0f);
-    [SerializeField] private Vector3 vertexB = new Vector3(1f, 0f, 0f);
-    [SerializeField] private Vector3 vertexC = new Vector3(0.5f, 1f, 0f);
-    [SerializeField] private Color triangleColor = new Color(1f, 0.6f, 0.2f, 1f);
+    // S06_SoftwareRasterizer_Finish의 256x256 픽셀 좌표 A(20,220) B(40,40) C(235,120)를
+    // 월드 좌표로 옮긴 값 — (픽셀 / 32) - (4, 3)
+    // 균등 축소 + 평행이동이므로 삼각형의 모양(닮음)은 그대로 유지됨
+    [SerializeField] private Vector3 vertexA = new Vector3(-3.375f, 3.875f, 0f);
+    [SerializeField] private Vector3 vertexB = new Vector3(-2.75f, -1.75f, 0f);
+    [SerializeField] private Vector3 vertexC = new Vector3(3.34375f, 0.75f, 0f);
+    [SerializeField] private Color triangleColor = new Color(0.2f, 0.75f, 0.95f, 1f);
 
     void OnRenderObject()
     {
