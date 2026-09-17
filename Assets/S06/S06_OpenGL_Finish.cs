@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class S06_ImmediateModeTriangle_Finish : MonoBehaviour
+public class S06_OpenGL_Finish : MonoBehaviour
 {
     [SerializeField] private Material glMaterial;
     [SerializeField] private Vector3 vertexA = new Vector3(0f, 0f, 0f);
@@ -14,7 +14,7 @@ public class S06_ImmediateModeTriangle_Finish : MonoBehaviour
         // (Renderer 컴포넌트 없이도 동작 — 빈 GameObject에 이 스크립트만 붙여도 됨)
 
         glMaterial.SetPass(0);
-        // lineMaterial이 사용할 셰이더를 GPU에 적용(활성화)
+        // glMaterial이 사용할 셰이더를 GPU에 적용(활성화)
         // 이후 그리는 모든 정점은 이 셰이더로 처리됨
 
         GL.Begin(GL.TRIANGLES);
@@ -23,7 +23,7 @@ public class S06_ImmediateModeTriangle_Finish : MonoBehaviour
 
         GL.Color(triangleColor);
         // 지금부터 그릴 정점들의 색을 지정
-        // (이 색은 lineMaterial의 셰이더가 실제로 읽어서 써야 반영됨 — Lit 셰이더는 무시함)
+        // (이 색은 glMaterial의 셰이더가 실제로 읽어서 써야 반영됨 — Lit 셰이더는 무시함)
 
         GL.Vertex3(vertexA.x, vertexA.y, vertexA.z);
         GL.Vertex3(vertexB.x, vertexB.y, vertexB.z);
