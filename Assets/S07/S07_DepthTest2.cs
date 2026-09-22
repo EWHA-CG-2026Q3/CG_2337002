@@ -7,19 +7,21 @@ public class S07_DepthTest2 : MonoBehaviour
     [SerializeField] private int canvasWidth = 256;
     [SerializeField] private int canvasHeight = 256;
 
-    [SerializeField] private Vector3 vertexA1 = new Vector3(100, 180, 0.3f);
-    [SerializeField] private Vector3 vertexB1 = new Vector3(60, 80, 0.3f);
-    [SerializeField] private Vector3 vertexC1 = new Vector3(180, 80, 0.3f);
+    // z 설계: 주황과 초록은 z=0.5 평면에 두고, 파랑만 위가 가깝고 아래가 멀게(0.2→0.6) 기울여 두 평면을 뚫고 지나가게 만들어,
+    // 겹침 영역의 위쪽은 파랑이, 아래쪽은 주황·초록이 앞에 보이도록 했다.
+    [SerializeField] private Vector3 vertexA1 = new Vector3(100, 180, 0.5f);
+    [SerializeField] private Vector3 vertexB1 = new Vector3(60, 80, 0.5f);
+    [SerializeField] private Vector3 vertexC1 = new Vector3(180, 80, 0.5f);
     [SerializeField] private Color color1 = new Color(1f, 0.4f, 0.2f, 1f);
 
     [SerializeField] private Vector3 vertexA2 = new Vector3(150, 200, 0.2f);
-    [SerializeField] private Vector3 vertexB2 = new Vector3(90, 60, 0.8f);
-    [SerializeField] private Vector3 vertexC2 = new Vector3(220, 60, 0.8f);
+    [SerializeField] private Vector3 vertexB2 = new Vector3(90, 60, 0.6f);
+    [SerializeField] private Vector3 vertexC2 = new Vector3(220, 60, 0.6f);
     [SerializeField] private Color color2 = new Color(0.2f, 0.5f, 1f, 1f);
 
-    [SerializeField] private Vector3 vertexA3 = new Vector3(210, 220, 0.3f);
-    [SerializeField] private Vector3 vertexB3 = new Vector3(160, 50, 0.6f);
-    [SerializeField] private Vector3 vertexC3 = new Vector3(250, 50, 0.9f);
+    [SerializeField] private Vector3 vertexA3 = new Vector3(210, 220, 0.5f);
+    [SerializeField] private Vector3 vertexB3 = new Vector3(160, 50, 0.5f);
+    [SerializeField] private Vector3 vertexC3 = new Vector3(250, 50, 0.5f);
     [SerializeField] private Color color3 = new Color(0.3f, 0.9f, 0.4f, 1f);
 
     private Texture2D canvasTexture;
