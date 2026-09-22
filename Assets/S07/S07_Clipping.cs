@@ -8,9 +8,11 @@ public class S07_Clipping : MonoBehaviour
     [SerializeField] private int canvasWidth = 256;
     [SerializeField] private int canvasHeight = 256;
     [SerializeField] private int clipMargin = 40;  // 캔버스 안쪽으로 이만큼 들어온 지점이 클리핑 경계
+    // polygon 설계: 기울어진 사각형의 왼쪽 꼭짓점(x=5), 위쪽 꼭짓점(y=250), 오른쪽 꼭짓점(x=250)이 각각 왼쪽·위쪽·오른쪽 여백선을 넘게 두어
+    // 한 도형이 세 방향의 경계에서 동시에 잘리고, 아래쪽 꼭짓점(y=80)만 안쪽에 남겨 원래 모양과 잘린 결과를 비교할 수 있게 했다.
     [SerializeField]
     private List<Vector2> polygon = new List<Vector2> {
-        new Vector2(10, 130), new Vector2(130, 250), new Vector2(246, 130)
+        new Vector2(5, 140), new Vector2(110, 250), new Vector2(250, 160), new Vector2(130, 80)
     };
     [SerializeField] private Color fillColor = new Color(1f, 0.6f, 0.2f, 1f);
     [SerializeField] private Color marginOutlineColor = new Color(0.5f, 0.5f, 0.5f, 1f);
@@ -178,8 +180,8 @@ public class S07_Clipping : MonoBehaviour
     // ── TODO: GetIntersectionX를 참고해서 y 기준 교차점을 구하는 함수를 완성하세요 ──
     private Vector2 GetIntersectionY(Vector2 p1, Vector2 p2, float boundaryY)
     {
-        // TODO
-        return Vector2.zero;
+        float t = (boundaryY - p1.y) / (p2.y - p1.y);
+        return new Vector2(p1.x + t * (p2.x - p1.x), boundaryY);
     }
 
     // ── 이미 완성되어 있음 (S06과 동일한 로직 재사용) ─────────
