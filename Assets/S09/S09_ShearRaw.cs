@@ -14,6 +14,13 @@ public class S09_ShearRaw : MonoBehaviour
         diamondMesh = GetComponent<DiamondMesh>();
     }
 
+    void Update()
+    {
+        if (diamondMesh == null || diamondMesh.BaseVertices == null) return;
+
+        diamondMesh.SetVertices(ApplyShear_Raw(diamondMesh.BaseVertices, k));
+    }
+
     // e₂만 (k, 1, 0)으로 이동
     float[,] ShearMatrixRaw(float k)
     {
@@ -43,5 +50,15 @@ public class S09_ShearRaw : MonoBehaviour
             for (int col = 0; col < 4; col++)
                 result[row] += M[row, col] * input[col];
         return new Vector4(result[0], result[1], result[2], result[3]);
+    }
+
+    Vector3[] ApplyShear_Raw(Vector3[] baseVertices, float k)
+    {
+        float[,] H = ShearMatrixRaw(k);
+
+        Vector3[] verts = new Vector3[baseVertices.Length];
+        for (int i = 0; i < baseVertices.Length; i++)
+            verts[i] = FromHomogeneous(MultiplyMatrixVectorRaw(H, ToHomogeneous(baseVertices[i])));
+        return verts;
     }
 }
