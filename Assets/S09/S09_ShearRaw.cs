@@ -21,6 +21,14 @@ public class S09_ShearRaw : MonoBehaviour
         diamondMesh.SetVertices(ApplyShear_Raw(diamondMesh.BaseVertices, k));
     }
 
+    // Inspector에서 k를 바꿀 때마다 꼭대기 정점 결과 출력
+    void OnValidate()
+    {
+        Vector3 top = new Vector3(0.5f, 1f, 0.5f);
+        Vector4 h = MultiplyMatrixVectorRaw(ShearMatrixRaw(k), ToHomogeneous(top));
+        Debug.Log($"k = {k}, 꼭대기 {top} → {FromHomogeneous(h)}");
+    }
+
     // e₂만 (k, 1, 0)으로 이동
     float[,] ShearMatrixRaw(float k)
     {
