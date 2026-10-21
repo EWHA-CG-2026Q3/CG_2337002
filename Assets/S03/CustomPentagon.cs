@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteAlways]
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 
 public class CustomPentagon : MonoBehaviour
@@ -27,7 +28,7 @@ public class CustomPentagon : MonoBehaviour
     mesh.triangles = triangles;
     mesh.RecalculateNormals();
 
-    GetComponent<MeshFilter>().mesh = mesh;
+    GetComponent<MeshFilter>().sharedMesh = mesh;
     MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
     if (meshRenderer.sharedMaterial == null)
       meshRenderer.sharedMaterial = new Material(Shader.Find("Universal Render Pipeline/Lit"));
