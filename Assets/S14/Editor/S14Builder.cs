@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public static class S14Builder
 {
@@ -60,6 +62,51 @@ public static class S14Builder
         AssetDatabase.SaveAssets();
         EditorSceneManager.MarkSceneDirty(bowl.scene);
         Selection.activeGameObject = bowl;
+    }
+
+    [MenuItem("S14/실습 4 빛이 번지다 (Bloom)")]
+    static void BuildBloom()
+    {
+        if (Object.FindAnyObjectByType<Volume>() != null)
+        {
+            Debug.LogWarning("Volume이 이미 있습니다.");
+            return;
+        }
+
+        string path = Dir + "S14_GlobalVolumeProfile.asset";
+        var profile = AssetDatabase.LoadAssetAtPath<VolumeProfile>(path);
+        if (profile == null)
+        {
+            profile = ScriptableObject.CreateInstance<VolumeProfile>();
+            AssetDatabase.CreateAsset(profile, path);
+        }
+        if (!profile.TryGet(out Bloom bloom))
+        {
+            bloom = profile.Add<Bloom>(true);
+            bloom.name = "Bloom";
+            bloom.hideFlags = HideFlags.HideInInspector | HideFlags.HideInHierarchy;
+            AssetDatabase.AddObjectToAsset(bloom, profile);
+        }
+        bloom.threshold.Override(1f);
+        bloom.intensity.Override(1.5f);
+        EditorUtility.SetDirty(bloom);
+        EditorUtility.SetDirty(profile);
+        AssetDatabase.SaveAssets();
+
+        var volumeGo = new GameObject("Global Volume");
+        var volume = volumeGo.AddComponent<Volume>();
+        volume.isGlobal = true;
+        volume.sharedProfile = profile;
+        Undo.RegisterCreatedObjectUndo(volumeGo, "S14 실습 4");
+
+        var cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        var camData = cam.GetUniversalAdditionalCameraData();
+        Undo.RecordObject(camData, "S14 실습 4");
+        camData.renderPostProcessing = true;
+        EditorUtility.SetDirty(camData);
+
+        EditorSceneManager.MarkSceneDirty(volumeGo.scene);
+        Selection.activeGameObject = volumeGo;
     }
 
     static float FindTableTop()
