@@ -4,3 +4,5 @@ T_Water_01.jpg - markusspiske - https://pixabay.com/ko/photos/수영장-물-파�
 T_Water_02.jpg - mylene2401 - https://pixabay.com/ko/photos/물-수영장-반사-여름-햇빛-8183918/ - Pixabay Content License
 T_Water_01_Seamless.png - T_Water_01.jpg를 RenderHub Seamless Texture Generator(https://www.renderhub.com/3d-toolbox/seamless-texture-generator)로 이음매 없게 가공
 T_Water_02_Seamless.png - T_Water_02.jpg를 RenderHub Seamless Texture Generator(https://www.renderhub.com/3d-toolbox/seamless-texture-generator)로 이음매 없게 가공
+T_Puddle.jpg - noname_13 - https://pixabay.com/ko/photos/파도-호수-바다-대양-배경-3085701/ - Pixabay Content License
+T_Puddle_Seamless.png - T_Puddle.jpg를 RenderHub Seamless Texture Generator(https://www.renderhub.com/3d-toolbox/seamless-texture-generator)로 이음매 없게 가공 후 2048px로 축소
