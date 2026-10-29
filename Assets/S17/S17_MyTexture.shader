@@ -30,8 +30,11 @@
                 // float2 p = uv * 0.25 + float2(0.25, 0.5);
 
                 // 미션 2: 그림 전체를 표면의 왼쪽 아래 1/4에
-                float2 p = uv * 2;
-                if (p.x > 1 || p.y > 1) return float4(0.5, 0.5, 0.5, 1);
+                // float2 p = uv * 2;
+                // if (p.x > 1 || p.y > 1) return float4(0.5, 0.5, 0.5, 1);
+
+                // 과제: D3 한 칸만 표면 전체에
+                float2 p = uv * 0.25 + float2(0.5, 0);
 
                 return tex2D(_BaseMap, p);
             }
